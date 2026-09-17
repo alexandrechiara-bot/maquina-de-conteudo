@@ -47,8 +47,8 @@ Este documento descreve o cronograma de desenvolvimento, marcos operacionais (mi
   - [x] `reels-educacional.md` (roteiro 30-60s, gancho de 3s obrigatório)
   - [x] `reels-mito.md` (roteiro 20-40s, abre negando uma crença comum)
 - [x] Desenvolvimento da engrenagem de carregamento dinâmico e injeção de prompts no backend/edge function.
-- [ ] Formulário do Gerador de Roteiros: Seleção de tipo de vídeo/prompt + entradas de usuário.
-- [ ] Interface de exibição do Roteiro Gerado com opção "Copiar Roteiro" e "Salvar Roteiro".
+- [x] Formulário do Gerador de Roteiros: Seleção de tipo de vídeo/prompt + entradas de usuário.
+- [x] Interface de exibição do Roteiro Gerado com opção "Copiar Roteiro" e "Salvar Roteiro".
 
 ### 📅 Fase 5: Módulo de Carrosséis, Cards Estáticos & Design System (Semana 5)
 - [ ] Tela do Gerador de Carrossel/Cards com visualização dividida (Controles à esquerda, Live Preview à direita).
@@ -83,5 +83,5 @@ Este documento descreve o cronograma de desenvolvimento, marcos operacionais (mi
 - [x] Brand Kit (handle, cores e logo) com persistência no Supabase; Design System visual (blobs, réguas, tipografia mista) segue pendente na Fase 5.
 - [x] Gerador de Cronograma Semanal em 1 clique (Segunda a Domingo).
 - [x] Biblioteca de Prompts em arquivos `.md` integrados ao backend.
-- [ ] Gerador de Roteiros e Carrosséis operando com base nos templates da biblioteca.
+- [x] Gerador de Roteiros operando com base nos templates da biblioteca (Carrosséis segue pendente na Fase 5).
 - [ ] Exportação em PNG e arquivo .ZIP operando com sucesso.

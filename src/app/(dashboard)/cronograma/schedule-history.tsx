@@ -22,8 +22,12 @@ export function ScheduleHistory({
 
   function handleDelete(id: string) {
     startDeleting(async () => {
-      await deleteWeeklySchedule(id);
-      toast.success("Cronograma removido.");
+      const result = await deleteWeeklySchedule(id);
+      if (result.error) {
+        toast.error(result.error);
+      } else {
+        toast.success("Cronograma removido.");
+      }
     });
   }
 

@@ -182,21 +182,29 @@ export async function getWeeklySchedules(): Promise<WeeklySchedule[]> {
   return data ?? [];
 }
 
-export async function deleteWeeklySchedule(id: string): Promise<void> {
+export async function deleteWeeklySchedule(
+  id: string
+): Promise<{ error: string | null }> {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return;
+    return { error: "Sessão expirada. Faça login novamente." };
   }
 
-  await supabase
+  const { error } = await supabase
     .from("weekly_schedules")
     .delete()
     .eq("id", id)
     .eq("user_id", user.id);
 
+  if (error) {
+    console.error("[deleteWeeklySchedule] falhou:", error);
+    return { error: "Não foi possível remover o cronograma." };
+  }
+
   revalidatePath("/cronograma");
+  return { error: null };
 }
