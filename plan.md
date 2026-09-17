@@ -30,13 +30,13 @@ Este documento descreve o cronograma de desenvolvimento, marcos operacionais (mi
 - [x] Armazenamento persistente do Brand Kit no estado global da aplicação.
 
 ### 📅 Fase 3: Módulo de Cronograma Semanal Automático (Semana 3)
-- [ ] Interface do Gerador de Cronograma (Grade semanal de 7 dias).
-- [ ] Form: Seleção de Nicho, Objetivo da Semana (Ex: Vendas, Autoridade, Engajamento) e Frequência diária.
-- [ ] Botão único "Gerar Cronograma da Semana":
-  - Endpoint chamando API da OpenAI (`gpt-4o-mini`) para distribuir tipos de post (Reel, Carrossel, Card, Story).
-- [ ] Visualização em formato Kanban ou Calendário Semanal (Segunda a Domingo).
-- [ ] Botão de Ação Direta em cada card do cronograma: "Gerar Roteiro/Post deste item" (redireciona para o gerador preenchido).
-- [ ] Funcionalidade de copiar cronograma ou exportar para CSV/PDF.
+- [x] Interface do Gerador de Cronograma (Grade semanal de 7 dias).
+- [x] Form: Seleção de Nicho, Objetivo da Semana (Ex: Vendas, Autoridade, Engajamento) e Frequência diária.
+- [x] Botão único "Gerar Cronograma da Semana":
+  - Endpoint chamando API do Google Gemini (`gemini-flash-latest`) para distribuir tipos de post (Reel, Carrossel, Card, Story). Nota: o plano original previa OpenAI `gpt-4o-mini`, mas o projeto já usa Anthropic/Gemini como provedores de IA.
+- [x] Visualização em formato de Grade Semanal (Segunda a Domingo).
+- [x] Botão de Ação Direta em cada card do cronograma: "Gerar Roteiro/Post deste item" (redireciona para o gerador preenchido).
+- [x] Funcionalidade de copiar cronograma ou exportar para CSV/PDF.
 
 ### 📅 Fase 4: Biblioteca de Prompts & Módulo de Roteiros (Semana 4)
 - [x] Criação do diretório de templates de sistema `src/prompts/` com os arquivos:
@@ -81,7 +81,7 @@ Este documento descreve o cronograma de desenvolvimento, marcos operacionais (mi
 ## 5. Checklist de Entrega do MVP
 - [x] Sistema de Login/Cadastro funcionando.
 - [x] Brand Kit (handle, cores e logo) com persistência no Supabase; Design System visual (blobs, réguas, tipografia mista) segue pendente na Fase 5.
-- [ ] Gerador de Cronograma Semanal em 1 clique (Segunda a Domingo).
+- [x] Gerador de Cronograma Semanal em 1 clique (Segunda a Domingo).
 - [x] Biblioteca de Prompts em arquivos `.md` integrados ao backend.
 - [ ] Gerador de Roteiros e Carrosséis operando com base nos templates da biblioteca.
 - [ ] Exportação em PNG e arquivo .ZIP operando com sucesso.
