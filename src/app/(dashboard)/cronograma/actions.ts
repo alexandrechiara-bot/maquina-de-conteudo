@@ -3,12 +3,14 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { gemini, GEMINI_MODELS } from "@/lib/gemini";
-import type { ScheduleDay, WeeklySchedule } from "./types";
+import { POST_TYPES, WEEKDAYS, type ScheduleDay, type WeeklySchedule } from "./types";
 
 export interface ScheduleActionState {
   error: string | null;
   success?: boolean;
   schedule?: ScheduleDay[];
+  niche?: string;
+  weeklyGoal?: string;
 }
 
 function buildSchedulePrompt(
@@ -34,15 +36,33 @@ Responda SOMENTE com um JSON no formato:
 O array "schedule" deve ter exatamente 7 itens (um para cada dia da semana, de Segunda a Domingo). Dias sem publicação devem usar "post_type": "Descanso" e "theme": "".`;
 }
 
+const VALID_POST_TYPES = new Set<string>([...POST_TYPES, "Descanso"]);
+
+function isValidScheduleDay(value: unknown): value is ScheduleDay {
+  if (typeof value !== "object" || value === null) return false;
+  const day = value as Record<string, unknown>;
+  return (
+    typeof day.day === "string" &&
+    (WEEKDAYS as readonly string[]).includes(day.day) &&
+    typeof day.post_type === "string" &&
+    VALID_POST_TYPES.has(day.post_type) &&
+    typeof day.theme === "string"
+  );
+}
+
 function parseScheduleResponse(text: string): ScheduleDay[] {
   const jsonMatch = text.match(/\{[\s\S]*\}/);
   if (!jsonMatch) {
     throw new Error("Resposta da IA não contém JSON válido.");
   }
 
-  const parsed = JSON.parse(jsonMatch[0]) as { schedule: ScheduleDay[] };
+  const parsed = JSON.parse(jsonMatch[0]) as { schedule: unknown };
 
-  if (!Array.isArray(parsed.schedule) || parsed.schedule.length !== 7) {
+  if (
+    !Array.isArray(parsed.schedule) ||
+    parsed.schedule.length !== 7 ||
+    !parsed.schedule.every(isValidScheduleDay)
+  ) {
     throw new Error("Cronograma gerado é inválido.");
   }
 
@@ -85,7 +105,7 @@ export async function generateWeeklySchedule(
 
       const schedule = parseScheduleResponse(text);
 
-      return { error: null, success: true, schedule };
+      return { error: null, success: true, schedule, niche, weeklyGoal };
     } catch (err) {
       const isLastAttempt = attempt === MAX_ATTEMPTS;
       const isOverloaded =
@@ -148,11 +168,16 @@ export async function getWeeklySchedules(): Promise<WeeklySchedule[]> {
     return [];
   }
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("weekly_schedules")
     .select("id, niche, weekly_goal, schedule_content, created_at")
     .eq("user_id", user.id)
     .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("[getWeeklySchedules] falhou:", error);
+    throw new Error("Não foi possível carregar os cronogramas salvos.");
+  }
 
   return data ?? [];
 }

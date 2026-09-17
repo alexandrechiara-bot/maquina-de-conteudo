@@ -70,10 +70,12 @@ export function ScheduleGenerator() {
   const schedule = state.schedule;
 
   function handleSave() {
-    if (!schedule) return;
+    if (!schedule || state.niche === undefined || state.weeklyGoal === undefined) {
+      return;
+    }
 
     startSaving(async () => {
-      const result = await saveWeeklySchedule(niche, weeklyGoal, schedule);
+      const result = await saveWeeklySchedule(state.niche!, state.weeklyGoal!, schedule);
       if (result.error) {
         toast.error(result.error);
       } else {
