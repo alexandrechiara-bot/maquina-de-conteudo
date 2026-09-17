@@ -49,6 +49,9 @@ export default function CadastroPage() {
           {state.error && (
             <p className="text-sm text-destructive">{state.error}</p>
           )}
+          {state.success && state.message && (
+            <p className="text-sm text-muted-foreground">{state.message}</p>
+          )}
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
           <Button type="submit" className="w-full" disabled={isPending}>

@@ -87,7 +87,7 @@ export function BrandKitForm({ brandKit }: { brandKit: BrandKit }) {
                 id="logo"
                 name="logo"
                 type="file"
-                accept="image/png"
+                accept="image/png,.png"
                 onChange={(event) => {
                   const file = event.target.files?.[0];
                   if (file) {

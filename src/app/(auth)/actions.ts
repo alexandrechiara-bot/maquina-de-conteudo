@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 export interface AuthActionState {
   error: string | null;
   success?: boolean;
+  message?: string;
 }
 
 export async function login(
@@ -36,13 +37,21 @@ export async function signup(
   const password = String(formData.get("password") ?? "");
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
   });
 
   if (error) {
     return { error: "Não foi possível criar a conta. Tente outro e-mail." };
+  }
+
+  if (!data.session) {
+    return {
+      error: null,
+      success: true,
+      message: "Conta criada! Verifique seu e-mail para confirmar o cadastro antes de entrar.",
+    };
   }
 
   redirect("/dashboard");
