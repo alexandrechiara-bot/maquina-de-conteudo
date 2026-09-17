@@ -23,11 +23,11 @@ Este documento descreve o cronograma de desenvolvimento, marcos operacionais (mi
 
 ### 📅 Fase 2: Brand Kit & Configurações do Usuário (Semana 2)
 - [x] Implementação da tabela `profiles` no Supabase.
-- [ ] Interface para gerenciamento de perfil e identidade visual:
+- [x] Interface para gerenciamento de perfil e identidade visual:
   - Definir handle/username (ex: `@meuperfil`).
   - Seleção de paleta de cores da marca (cor primária, secundária, fundo).
   - Upload de logotipo (PNG com fundo transparente) no Supabase Storage.
-- [ ] Armazenamento persistente do Brand Kit no estado global da aplicação.
+- [x] Armazenamento persistente do Brand Kit no estado global da aplicação.
 
 ### 📅 Fase 3: Módulo de Cronograma Semanal Automático (Semana 3)
 - [ ] Interface do Gerador de Cronograma (Grade semanal de 7 dias).
@@ -80,7 +80,7 @@ Este documento descreve o cronograma de desenvolvimento, marcos operacionais (mi
 
 ## 5. Checklist de Entrega do MVP
 - [x] Sistema de Login/Cadastro funcionando.
-- [ ] Brand Kit e Design System com elementos visuais (blobs, réguas, tipografia mista) operacionais.
+- [x] Brand Kit (handle, cores e logo) com persistência no Supabase; Design System visual (blobs, réguas, tipografia mista) segue pendente na Fase 5.
 - [ ] Gerador de Cronograma Semanal em 1 clique (Segunda a Domingo).
 - [x] Biblioteca de Prompts em arquivos `.md` integrados ao backend.
 - [ ] Gerador de Roteiros e Carrosséis operando com base nos templates da biblioteca.
