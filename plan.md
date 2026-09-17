@@ -15,14 +15,14 @@ Este documento descreve o cronograma de desenvolvimento, marcos operacionais (mi
 ## 3. Cronograma e Fases de Implementação
 
 ### 📅 Fase 1: Fundação & Autenticação (Semana 1)
-- [ ] Configuração do repositório Git e estrutura inicial do projeto React/Next.js.
-- [ ] Instalação e configuração do Tailwind CSS e shadcn/ui.
-- [ ] Criação do projeto no Supabase (Configuração de URL, Anon Key).
-- [ ] Implementação das telas de Login, Cadastro e Recuperação de Senha via Supabase Auth.
-- [ ] Criação do painel lateral (Sidebar) e navegação principal do dashboard.
+- [x] Configuração do repositório Git e estrutura inicial do projeto React/Next.js.
+- [x] Instalação e configuração do Tailwind CSS e shadcn/ui.
+- [x] Criação do projeto no Supabase (Configuração de URL, Anon Key).
+- [x] Implementação das telas de Login, Cadastro e Recuperação de Senha via Supabase Auth.
+- [x] Criação do painel lateral (Sidebar) e navegação principal do dashboard.
 
 ### 📅 Fase 2: Brand Kit & Configurações do Usuário (Semana 2)
-- [ ] Implementação da tabela `profiles` no Supabase.
+- [x] Implementação da tabela `profiles` no Supabase.
 - [ ] Interface para gerenciamento de perfil e identidade visual:
   - Definir handle/username (ex: `@meuperfil`).
   - Seleção de paleta de cores da marca (cor primária, secundária, fundo).
@@ -39,14 +39,14 @@ Este documento descreve o cronograma de desenvolvimento, marcos operacionais (mi
 - [ ] Funcionalidade de copiar cronograma ou exportar para CSV/PDF.
 
 ### 📅 Fase 4: Biblioteca de Prompts & Módulo de Roteiros (Semana 4)
-- [ ] Criação do diretório de templates de sistema `src/prompts/` com os arquivos:
-  - [ ] `carrossel-educacional.md` (7 a 10 slides, estrutura problema → mecanismo → ação)
-  - [ ] `carrossel-mitos.md` (6 a 8 slides, formato mito/verdade)
-  - [ ] `card-citacao.md` (1 card, frase de até 140 caracteres)
-  - [ ] `card-dado.md` (1 card, número em destaque + fonte obrigatória)
-  - [ ] `reels-educacional.md` (roteiro 30-60s, gancho de 3s obrigatório)
-  - [ ] `reels-mito.md` (roteiro 20-40s, abre negando uma crença comum)
-- [ ] Desenvolvimento da engrenagem de carregamento dinâmico e injeção de prompts no backend/edge function.
+- [x] Criação do diretório de templates de sistema `src/prompts/` com os arquivos:
+  - [x] `carrossel-educacional.md` (7 a 10 slides, estrutura problema → mecanismo → ação)
+  - [x] `carrossel-mitos.md` (6 a 8 slides, formato mito/verdade)
+  - [x] `card-citacao.md` (1 card, frase de até 140 caracteres)
+  - [x] `card-dado.md` (1 card, número em destaque + fonte obrigatória)
+  - [x] `reels-educacional.md` (roteiro 30-60s, gancho de 3s obrigatório)
+  - [x] `reels-mito.md` (roteiro 20-40s, abre negando uma crença comum)
+- [x] Desenvolvimento da engrenagem de carregamento dinâmico e injeção de prompts no backend/edge function.
 - [ ] Formulário do Gerador de Roteiros: Seleção de tipo de vídeo/prompt + entradas de usuário.
 - [ ] Interface de exibição do Roteiro Gerado com opção "Copiar Roteiro" e "Salvar Roteiro".
 
@@ -79,9 +79,9 @@ Este documento descreve o cronograma de desenvolvimento, marcos operacionais (mi
 ---
 
 ## 5. Checklist de Entrega do MVP
-- [ ] Sistema de Login/Cadastro funcionando.
+- [x] Sistema de Login/Cadastro funcionando.
 - [ ] Brand Kit e Design System com elementos visuais (blobs, réguas, tipografia mista) operacionais.
 - [ ] Gerador de Cronograma Semanal em 1 clique (Segunda a Domingo).
-- [ ] Biblioteca de Prompts em arquivos `.md` integrados ao backend.
+- [x] Biblioteca de Prompts em arquivos `.md` integrados ao backend.
 - [ ] Gerador de Roteiros e Carrosséis operando com base nos templates da biblioteca.
 - [ ] Exportação em PNG e arquivo .ZIP operando com sucesso.
